@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+@if (TempData["success"] != null) @* success is the tempdata value we created in the categorycontroller *@
+{
+    <h5 style="color:red; background-color:azure; text-align:center; margin-bottom:10px;">@TempData["success"]</h5>
+}
+
 
 <div class="row p-4">
        
