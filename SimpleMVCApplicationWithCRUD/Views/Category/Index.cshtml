@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="container p-3">
-    <div class="row p-4">
+
+
+<div class="row p-4">
        
-        <div class="col-9">
+        <div class="col-6">
             <h2 class="text-primary">Category List</h2>
         </div>
-        <div class="col-3" style="float:right">
+        <div class="col-6 text-end">
             <a asp-asp-controller="Category" asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-circle-dotted"></i>&nbsp; New Category</a>
         </div>
     </div>
@@ -23,22 +24,47 @@
 
         <tr>
             <th>
+                S/N
+            </th>
+            <th>
                 Category Name
             </th>
             <th>
                 Display Order
             </th>
+            <th>
+                Time Created
+            </th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach(var obj in Model)
         {
             <tr>
+                <td width="10%">
+                    @obj.Id
+                </td>
                 <td width="40%">
                     @obj.Name
                 </td>
-                <td width="20%">
+                <td width="10%">
                     @obj.DisplayOrder
+                </td>
+                <td width="20%">
+                    @obj.CreatedDateTime
+                </td>
+                <td width="10%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="edit" asp-route-id="@obj.Id"
+                        class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>&nbsp;Edit</a>
+                    </div>
+                </td>
+                <td width="10%">
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="delete" asp-route-id="@obj.Id"
+                        class="btn btn-danger mx-2"> <i class="bi bi-trash"></i>&nbsp;Delete</a>
+                    </div>
                 </td>
             </tr>
         }

@@ -1,25 +1,24 @@
 ﻿@model Category
 
-<form method="post">
+<form method="post" asp-action="DeleteItem">
+    <input asp-for="Id" hidden /> @* without this line, there be an error, because the other fields are disable, so no id would be passed to the request *@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 class="text-primary">Create Category</h2>
+            <h2 class="text-primary">Edit Category</h2>
             <hr />
 
         </div>
         <div asp-validation-summary="All"></div> @* error summary message *@
         <div class="mb-5" style="margin-bottom:15px">
             <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control"/>
-            <span asp-validation-for="Name" class="text-danger" style="color:red;"></span>
-        </div>
+            <input asp-for="Name" class="form-control" disabled/>
+            </div>
 
         <div class="mb-5" style="margin-bottom:15px">
             <label asp-for="DisplayOrder"></label>
-            <input asp-for="DisplayOrder" class="form-control" />
-            <span asp-validation-for="DisplayOrder" class="text-danger" style="color:red;"></span>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:150px"> <i class="bi bi-plus-circle-dotted"></i>&nbsp;Create</button>
+            <input asp-for="DisplayOrder" class="form-control"  disabled/>
+            </div>
+        <button type="submit" class="btn btn-danger" style="width:150px"> Delete</button>
         &nbsp;
         <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" style="width:150px">
             Back to List
